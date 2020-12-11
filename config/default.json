@@ -1,0 +1,12 @@
+{
+  "App": {
+    "host": "0.0.0.0",
+    "port": "5023",
+    "api_auth_key": "ABCXYZ"
+  },
+  "Cognito": {
+    "user_pool_id": "eu-west-1_E3otEFdhI",
+    "client_id": "5cmbrkcg2ticd06hmlm0r3l67g",
+    "region": "eu-west-1"
+  }
+}
