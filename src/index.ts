@@ -8,8 +8,7 @@ import helmet from 'helmet';
 import mongoSanitize from 'express-mongo-sanitize';
 import routes from './routes';
 import { Db } from './middleware/DbMongo';
-import { CognitoInit } from './middleware/Cognito';
-import { UsersModel } from './shared/users';
+import { PageModel } from './modules/pages';
 
 type TAppConfig = {
     host: string;
@@ -34,10 +33,9 @@ app.use(limiter);
 app.use(mongoSanitize());
 
 app.use(bodyParser.json({limit: '10kb'}));
-app.use(Db([UsersModel]));
-app.use(CognitoInit());
+app.use(Db([PageModel]));
 
-app.use('/pages/', routes);
+app.use('/api/pages/', routes);
 
 app.get('/', (req, res) => {
     res.send('Hello from home');
