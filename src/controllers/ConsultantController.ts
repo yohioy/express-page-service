@@ -1,9 +1,11 @@
 import { Response } from 'express';
-import { PageGeneral } from "../modules/pages";
+import { Consultant } from "../modules/consultants";
 import logger from '../lib/logger';
 import {responseType} from '../lib/responseTypes';
+import Joi from "joi";
+import {PageGeneral} from "../modules/pages";
 
-class PageController {
+class ConsultantController {
 
     async create(req, res: Response) {
 
@@ -15,18 +17,33 @@ class PageController {
             shortDescription: payload.shortDescription,
             longDescription: payload.longDescription,
             strapLine: payload.strapLine,
+            seoFriendlyLinkId: payload.seoFriendlyLinkId,
+            customLink: payload.customLink,
+            metaTitle: payload.metaTitle,
+            metaDescription: payload.metaDescription,
+            metaKeywords: payload.metaKeywords,
             template: payload.template,
             plugins: payload.plugins,
             images: payload.images,
+            profileLetter: payload.profileLetter,
+            qualifications: payload.qualifications,
+            hospitals: payload.hospitals,
+            clinicalInterests: payload.clinicalInterests,
+            contactEmail: payload.contactEmail,
+            contactTelephone: payload.contactTelephone,
+            websiteAddress: payload.websiteAddress,
+            clinicTimes: payload.clinicTimes,
+            specialities: payload.specialities,
+            services: payload.services,
             createdDate: Date.now(),
             modifiedDate: Date.now(),
             pageStatus: payload.pageStatus,
         };
 
-        let page = new PageGeneral(options);
+        let consultant = new Consultant(options);
 
         try {
-            await page.create(data);
+            await consultant.create(data);
             res.status(responseType.success.code).json(responseType.success)
         } catch (e) {
             logger.error(e);
@@ -49,37 +66,34 @@ class PageController {
             shortDescription: payload.shortDescription,
             longDescription: payload.longDescription,
             strapLine: payload.strapLine,
+            seoFriendlyLinkId: payload.seoFriendlyLinkId,
+            customLink: payload.customLink,
+            metaTitle: payload.metaTitle,
+            metaDescription: payload.metaDescription,
+            metaKeywords: payload.metaKeywords,
+            template: payload.template,
+            plugins: payload.plugins,
+            images: payload.images,
+            profileLetter: payload.profileLetter,
+            qualifications: payload.qualifications,
+            hospitals: payload.hospitals,
+            clinicalInterests: payload.clinicalInterests,
+            contactEmail: payload.contactEmail,
+            contactTelephone: payload.contactTelephone,
+            websiteAddress: payload.websiteAddress,
+            clinicTimes: payload.clinicTimes,
+            specialities: payload.specialities,
+            services: payload.services,
             createdDate: Date.now(),
             modifiedDate: Date.now(),
             pageStatus: payload.pageStatus,
         };
 
-        let page = new PageGeneral(options);
+        let consultant = new Consultant(options);
 
         try {
-            await page.update(id, data);
+            await consultant.update(id, data);
             res.status(responseType.success.code).json(responseType.success)
-        } catch (e) {
-            logger.error(e);
-            res.status(responseType.failed.code).json(responseType.failed);
-        }
-
-    }
-
-    async getAll(req, res: Response) {
-        const options = { db: req.app.locals.db };
-        let page = new PageGeneral(options);
-
-        let query = {};
-
-        if(req.query.type) {
-            query = { ...query, ...{ template: req.query.type } }
-        }
-
-        try {
-            const response = await page.getAll(query);
-            res.status(responseType.success.code).json({total: response.length, data: response,});
-
         } catch (e) {
             logger.error(e);
             res.status(responseType.failed.code).json(responseType.failed);
@@ -92,10 +106,10 @@ class PageController {
         const options = { db: req.app.locals.db };
         const id = req.params.id;
 
-        let page = new PageGeneral(options);
+        let consultant = new Consultant(options);
 
         try {
-            const response = await page.getById(id);
+            const response = await consultant.getById(id);
             res.status(responseType.success.code).json({ data: response })
         } catch (e) {
             logger.error(e);
@@ -103,23 +117,6 @@ class PageController {
         }
     }
 
-
-    async delete(req, res: Response) {
-        const options = { db: req.app.locals.db };
-        const id = req.params.id;
-
-        let page = new PageGeneral(options);
-
-        try {
-            await page.delete(id);
-            res.status(responseType.success.code).json(responseType.success)
-        } catch (e) {
-            console.log(e);
-            res.status(responseType.failed.code).json(responseType.failed);
-        }
-
-    }
-
 }
 
-export default new PageController();
+export default new ConsultantController();

@@ -1,7 +1,7 @@
 import { Entity, ObjectID, ObjectIdColumn, Column } from "typeorm";
 
 @Entity('pages')
-export class PageModel {
+export class ConsultantModel {
 
     @ObjectIdColumn()
     id: ObjectID;
@@ -53,6 +53,36 @@ export class PageModel {
 
     @Column()
     plugins: object;
+
+    @Column()
+    profileLetter: string;
+
+    @Column()
+    qualifications: string;
+
+    @Column()
+    hospitals: string;
+
+    @Column()
+    clinicalInterests: string;
+
+    @Column()
+    contactEmail: string;
+
+    @Column()
+    contactTelephone: string;
+
+    @Column()
+    websiteAddress: string;
+
+    @Column()
+    clinicTimes: string;
+
+    @Column()
+    specialities: string;
+
+    @Column()
+    services: string;
 
     @Column()
     pageStatus: string;

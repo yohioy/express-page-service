@@ -25,12 +25,12 @@ export const Db = (entities) => {
         try{
             const connection = await createConnection(options);
             const mongoManager: MongoEntityManager = await connection.mongoManager;
-            req.dbManager = mongoManager;
+            req.app.locals.db = mongoManager;
         } catch (e) {
             if (e.name === "AlreadyHasActiveConnectionError") {
                 const existentConn = getConnection("default");
                 const mongoManager: MongoEntityManager = await existentConn.mongoManager;
-                req.dbManager = mongoManager;
+                req.app.locals.db = mongoManager;
             } else {
                 console.log('Error', e);
             }
