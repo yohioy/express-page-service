@@ -2,8 +2,6 @@ import { Response } from 'express';
 import { Consultant } from "../modules/consultants";
 import logger from '../lib/logger';
 import {responseType} from '../lib/responseTypes';
-import Joi from "joi";
-import {PageGeneral} from "../modules/pages";
 
 class ConsultantController {
 

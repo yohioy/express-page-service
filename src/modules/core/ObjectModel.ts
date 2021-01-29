@@ -1,7 +1,7 @@
 interface IObjectModel {
     db: object;
     data: object;
-    query: object;
+    filter: object;
     id: string;
     model: any;
     describe(): void;
@@ -16,7 +16,7 @@ export abstract class ObjectModel implements IObjectModel {
 
     db: any;
     data: object;
-    query: object;
+    filter: object;
     id: string;
     model: any;
 
@@ -39,8 +39,8 @@ export abstract class ObjectModel implements IObjectModel {
         return this.db.findOne(this.model, id);
     };
 
-    async getAll(query) {
-        return this.db.find(this.model, query);
+    async getAll(filter) {
+        return this.db.find(this.model, filter);
     };
 
     async delete(id) {

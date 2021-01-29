@@ -21,7 +21,7 @@ export const pageValidation = async (data: object, options: IOptions) => {
         template: Joi.string().valid(...templateTypes).required(),
         menuLocation: Joi.string(),
         relatedPages: Joi.object(),
-        plugins: Joi.object(),
+        plugins: Joi.array(),
         pageStatus: Joi.string().valid(...pageStatusTypes).required(),
     }).required();
 

@@ -20,7 +20,6 @@ router.get('/consultants/:id', consultantController.getById);
 router.post('/consultants', consultantValidator.create, consultantController.create);
 router.put('/consultants/:id', consultantValidator.update, consultantController.update);
 
-
 router.get('/info', (req, res) => {
     res.send('Hello from Page Service');
 });

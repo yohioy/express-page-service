@@ -49,6 +49,9 @@ class PageController {
             shortDescription: payload.shortDescription,
             longDescription: payload.longDescription,
             strapLine: payload.strapLine,
+            template: payload.template,
+            plugins: payload.plugins,
+            images: payload.images,
             createdDate: Date.now(),
             modifiedDate: Date.now(),
             pageStatus: payload.pageStatus,
@@ -68,17 +71,12 @@ class PageController {
 
     async getAll(req, res: Response) {
         const options = { db: req.app.locals.db };
-        let page = new PageGeneral(options);
-
-        let query = {};
-
-        if(req.query.type) {
-            query = { ...query, ...{ template: req.query.type } }
-        }
+        const page = new PageGeneral(options);
+        const query = req.query;
 
         try {
             const response = await page.getAll(query);
-            res.status(responseType.success.code).json({total: response.length, data: response,});
+            res.status(responseType.success.code).json({total: response.length, data: response});
 
         } catch (e) {
             logger.error(e);

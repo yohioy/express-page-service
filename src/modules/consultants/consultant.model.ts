@@ -46,7 +46,7 @@ export class ConsultantModel {
     menuLocation: string;
 
     @Column()
-    relatedPages: string;
+    relatedPages: object;
 
     @Column()
     pagePosition: string;

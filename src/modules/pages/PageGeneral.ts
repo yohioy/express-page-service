@@ -38,11 +38,15 @@ export class PageGeneral extends ObjectModel {
         return super.getById(id);
     }
 
-    async getAll (query: object): Promise<any> {
-        if(query) {
-            query = { where: query }
+    async getAll (query: { type?: string }): Promise<any> {
+
+        let filter;
+
+        if(query.type) {
+            filter = { where: { template: query.type } }
         }
-        return super.getAll(query);
+
+        return super.getAll(filter);
     }
 
     async delete (id: string): Promise<any> {
