@@ -9,6 +9,7 @@ import mongoSanitize from 'express-mongo-sanitize';
 import routes from './routes';
 import { Db } from './middleware/DbMongo';
 import { PageModel, ConsultantModel } from './modules';
+import fileUpload from 'express-fileupload';
 
 type TAppConfig = {
     host: string;
@@ -29,6 +30,7 @@ const limiter = rateLimit({ windowMs: 1 * 60 * 1000, max: 20, message: "Too many
 // Call middleware
 app.use(cors());
 app.use(helmet());
+app.use(fileUpload());
 
 //  apply to all requests
 app.use(limiter);
