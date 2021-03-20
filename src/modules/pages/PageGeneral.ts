@@ -1,17 +1,26 @@
 import { PageModel } from './page.model';
 import { ObjectModel } from '../core/ObjectModel';
-import { PageStatusTypes } from '../core/enum';
+import { PageStatusTypes, PageTemplateTypes, PageMenuLocationTypes } from '../core/enum';
 
 export interface ICreateGeneralPage {
     pageName: string;
     shortDescription: string;
     longDescription: string;
-    template: string;
+    parentPage: string;
+    strapLine: string;
+    seoFriendlyLinkId: string;
+    customLink: string;
+    metaTitle: string;
+    metaDescription: string;
+    metaKeywords: string;
     images: object;
+    template: PageTemplateTypes;
+    pageMenuLocation: PageMenuLocationTypes;
+    relatedPages: object;
     plugins: object;
+    pageStatus: PageStatusTypes;
     modifiedDate: number;
     createdDate: number;
-    pageStatus: PageStatusTypes;
 }
 
 export class PageGeneral extends ObjectModel {

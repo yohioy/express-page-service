@@ -43,7 +43,7 @@ export class PageModel {
     template: string;
 
     @Column()
-    menuLocation: string;
+    pageMenuLocation: string;
 
     @Column()
     relatedPages: object;

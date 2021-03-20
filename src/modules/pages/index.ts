@@ -1,2 +1,2 @@
 export { PageModel } from './page.model';
-export { PageGeneral } from './PageGeneral';
+export { PageGeneral, ICreateGeneralPage } from './PageGeneral';

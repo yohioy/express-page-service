@@ -1,5 +1,5 @@
 import { Response } from 'express';
-import { PageGeneral } from "../modules/pages";
+import { PageGeneral, ICreateGeneralPage } from "../modules/pages";
 import logger from '../lib/logger';
 import {responseType} from '../lib/responseTypes';
 
@@ -10,17 +10,25 @@ class PageController {
         const options = { db: req.app.locals.db };
         const payload = req.body;
 
-        const data = {
+        const data: ICreateGeneralPage = {
             pageName: payload.pageName,
             shortDescription: payload.shortDescription,
             longDescription: payload.longDescription,
+            parentPage: payload.parentPage,
             strapLine: payload.strapLine,
+            seoFriendlyLinkId: payload.seoFriendlyLinkId,
+            customLink: payload.customLink,
+            metaTitle: payload.metaTitle,
+            metaDescription: payload.metaDescription,
+            metaKeywords: payload.metaKeywords,
+            images: JSON.parse(payload.images),
             template: payload.template,
+            pageMenuLocation: payload.pageMenuLocation,
+            relatedPages: JSON.parse(payload.relatedPages),
             plugins: payload.plugins,
-            images: payload.images,
-            createdDate: Date.now(),
-            modifiedDate: Date.now(),
             pageStatus: payload.pageStatus,
+            createdDate: Date.now(),
+            modifiedDate: Date.now()
         };
 
         let page = new PageGeneral(options);
