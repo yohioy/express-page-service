@@ -3,6 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "build": "tsc",
+    "pre:build": "rm -rf ./dist",
     "start": "node dist/index.js",
     "start:debug": "nodemon src/index.ts",
     "tools:functions": "nodemon tools/test_functions.ts"
