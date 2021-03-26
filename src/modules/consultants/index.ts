@@ -1,2 +1,2 @@
 export { ConsultantModel } from './consultant.model';
-export { Consultant } from './Consultant';
+export { Consultant, ICreateConsultant } from './Consultant';

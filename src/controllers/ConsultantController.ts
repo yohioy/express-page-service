@@ -1,5 +1,5 @@
 import { Response } from 'express';
-import { Consultant } from "../modules/consultants";
+import { Consultant, ICreateConsultant } from "../modules/consultants";
 import logger from '../lib/logger';
 import {responseType} from '../lib/responseTypes';
 
@@ -10,7 +10,7 @@ class ConsultantController {
         const options = { db: req.app.locals.db };
         const payload = req.body;
 
-        const data = {
+        const data: ICreateConsultant = {
             pageName: payload.pageName,
             shortDescription: payload.shortDescription,
             longDescription: payload.longDescription,

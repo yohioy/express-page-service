@@ -6,6 +6,12 @@ export interface ICreateConsultant {
     pageName: string;
     shortDescription: string;
     longDescription: string;
+    strapLine?: string;
+    seoFriendlyLinkId: string;
+    customLink?: string
+    metaTitle: string;
+    metaDescription: string;
+    metaKeywords: string;
     template: string;
     images: object;
     plugins: object;
